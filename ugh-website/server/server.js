@@ -19,15 +19,15 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from the frontend
-app.use(express.static(path.join(__dirname, '../')));
+// Serve static files from the frontend - FIXED: pointing to correct folder
+app.use(express.static(path.join(__dirname, '../ugh-website')));
 
 // API Routes
 app.use('/api', apiRoutes);
 
 // Serve the frontend for any other routes (SPA support)
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../index.html'));
+    res.sendFile(path.join(__dirname, '../ugh-website/index.html'));
 });
 
 // Error handling middleware

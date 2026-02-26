@@ -1,72 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { query: dbQuery } = require('../config/db');
 const Order = require('../models/Order');
 const Customer = require('../models/Customer');
 const { sendOTPEmail, sendWaitlistNotification } = require('../services/emailService');
 
 // ==================== PRODUCTS ROUTES ====================
+// Note: Products are served from frontend app.js (local array)
+// For database products, add PostgreSQL table and uncomment below
 
-// Get all products
-router.get('/products', async (req, res) => {
-    try {
-        const { category } = req.query;
-        let sql = 'SELECT * FROM products';
-        let params = [];
-        
-        if (category && category !== 'all') {
-            sql += ' WHERE category = $1';
-            params.push(category);
-        }
-        
-        sql += ' ORDER BY id';
-        
-        const result = await dbQuery(sql, params);
-        
-        res.json({
-            success: true,
-            data: result.rows
-        });
-    } catch (error) {
-        console.error('Error fetching products:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Error fetching products',
-            error: error.message
-        });
-    }
-});
+// Get all products (from local array - frontend handles this)
+// router.get('/products', async (req, res) => { ... }
 
-// Get single product
-router.get('/products/:id', async (req, res) => {
-    try {
-        const result = await dbQuery(
-            'SELECT * FROM products WHERE id = $1',
-            [req.params.id]
-        );
-        
-        if (result.rows.length === 0) {
-            return res.status(404).json({
-                success: false,
-                message: 'Product not found'
-            });
-        }
-        
-        res.json({
-            success: true,
-            data: result.rows[0]
-        });
-    } catch (error) {
-        console.error('Error fetching product:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Error fetching product',
-            error: error.message
-        });
-    }
-});
+// Get single product (from local array - frontend handles this)
+// router.get('/products/:id', async (req, res) => { ... }
 
-// ==================== ORDER ROUTES ====================
+// ==================== ORDER ROUTES (MongoDB) ====================
 
 // Create new order
 router.post('/orders', async (req, res) => {
@@ -81,19 +29,31 @@ router.post('/orders', async (req, res) => {
             });
         }
 
-        const orderNumber = 'UGHB-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+        // Generate order number
+        const date = new Date();
+        const timestamp = date.getTime().toString().slice(-6);
+        const random = Math.random().toString(36).substr(2, 4).toUpperCase();
+        const orderNumber = `UGHB-${timestamp}${random}`;
         
-        // Insert order into database
-        const result = await dbQuery(
-            `INSERT INTO orders (order_number, customer, items, payment_method, subtotal, vat, total, notes, status, payment_status, created_at) 
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW()) 
-             RETURNING *`,
-            [orderNumber, JSON.stringify(customer), JSON.stringify(items), paymentMethod, subtotal, vat, total, notes || '', 'pending', 'pending']
-        );
+        // Create order in MongoDB
+        const order = new Order({
+            orderNumber,
+            customer,
+            items,
+            paymentMethod,
+            subtotal,
+            vat,
+            total,
+            notes: notes || '',
+            status: 'pending',
+            paymentStatus: 'pending'
+        });
+
+        await order.save();
 
         res.status(201).json({
             success: true,
-            data: result.rows[0],
+            data: order,
             message: 'Order created successfully'
         });
     } catch (error) {
@@ -111,7 +71,8 @@ router.get('/orders', async (req, res) => {
     try {
         const { status, paymentStatus, page = 1, limit = 20 } = req.query;
         
-        let query = {};
+        // Build query
+        const query = {};
         if (status) query.status = status;
         if (paymentStatus) query.paymentStatus = paymentStatus;
 
@@ -234,7 +195,7 @@ router.patch('/orders/:id/payment', async (req, res) => {
     }
 });
 
-// ==================== CUSTOMER ROUTES ====================
+// ==================== CUSTOMER ROUTES (MongoDB) ====================
 
 // Register/Subscribe customer
 router.post('/customers', async (req, res) => {
@@ -271,7 +232,11 @@ router.post('/customers', async (req, res) => {
         // Generate and send OTP
         const otp = customer.generateOTP();
         await customer.save();
-        await sendOTPEmail(email, otp, 'verification');
+        
+        // Only send email in production/development with valid credentials
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+            await sendOTPEmail(email, otp, 'verification');
+        }
 
         res.status(201).json({
             success: true,
@@ -374,7 +339,11 @@ router.post('/customers/resend-otp', async (req, res) => {
         // Generate new OTP
         const otp = customer.generateOTP();
         await customer.save();
-        await sendOTPEmail(email, otp, 'verification');
+        
+        // Only send email if configured
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+            await sendOTPEmail(email, otp, 'verification');
+        }
 
         res.json({
             success: true,
@@ -425,8 +394,10 @@ router.post('/waitlist', async (req, res) => {
         customer.waitlistProducts.push({ productId, productName });
         await customer.save();
 
-        // Send waitlist confirmation
-        await sendWaitlistNotification(email, productName);
+        // Send waitlist confirmation if email is configured
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+            await sendWaitlistNotification(email, productName);
+        }
 
         res.status(201).json({
             success: true,

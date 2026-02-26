@@ -489,18 +489,34 @@ function loadCategoryProducts() {
     
     const categoryNames = {
         'all': 'All Products',
-        'tote': 'Tote Bags',
-        'crossbody': 'Crossbody Bags',
-        'backpack': 'Backpacks',
-        'clutch': 'Clutches'
+        'teri': 'Coach Teri',
+        'tabby': 'Coach Tabby',
+        'pillow': 'Pillow Coach',
+        'Pillow coach': 'Pillow Coach',
+        'halfcrescent': 'Half Crescent',
+        'mini': 'Chanel Mini',
+        'Mini': 'Chanel Mini',
+        'chanel': 'Chanel',
+        'ysl': 'YSL',
+        'ladydior': 'Lady Dior',
+        'gucci': 'Gucci',
+        'uneven': 'Uneven Sway'
     };
     
     const categoryDescs = {
-        'all': 'Browse our complete collection of stylish pink bags',
-        'tote': 'Discover our elegant collection of pink tote bags',
-        'crossbody': 'Find your perfect pink crossbody bag',
-        'backpack': 'Explore our trendy pink backpack collection',
-        'clutch': 'Shop our stunning pink clutch collection'
+        'all': 'Browse our complete collection of stylish bags',
+        'teri': 'Discover our Coach Teri collection',
+        'tabby': 'Find your perfect Coach Tabby bag',
+        'pillow': 'Explore our Pillow Coach collection',
+        'Pillow coach': 'Explore our Pillow Coach collection',
+        'halfcrescent': 'Shop our Half Crescent bags',
+        'mini': 'Chic Chanel Mini bags',
+        'Mini': 'Chic Chanel Mini bags',
+        'chanel': 'Classic Chanel collection',
+        'ysl': 'Elegant YSL bags',
+        'ladydior': 'Luxury Lady Dior bags',
+        'gucci': 'Gucci collection',
+        'uneven': 'Stylish Uneven Sway bags'
     };
     
     if (titleEl) titleEl.textContent = categoryNames[category] || 'Products';
