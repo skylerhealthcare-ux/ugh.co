@@ -16,3 +16,4 @@ Database → MongoDB Atlas (FREE)
 ```
 1. Go to your Netlify dashboard → Site settings → Domain management
 2
+  
