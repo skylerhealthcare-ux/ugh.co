@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - Ugh!  Bags</title>
+    <meta name="description" content="Ugh! - Your destination for stylish bags">
+    <meta name="theme-color" content="#ff69b4">
+    <link rel="icon" type="image/x-icon" href="img1/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="img1/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img1/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img1/apple-touch-icon.png">
+    <link rel="manifest" href="img1/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Ugh!</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="category.html?cat=all" class="nav-link">Shop All</a>
+                <div class="dropdown">
+                    <span class="nav-link dropdown-toggle">Categories</span>
+                    <div class="dropdown-menu">
+                        <a href="category.html?cat=tote">Coach Teri</a>
+                        <a href="category.html?cat=crossbody">Qillited Coach Tabby</a>
+                        <a href="category.html?cat=backpack">Mini Chanel Purse</a>
+                        <a href="category.html?cat=clutch">Half Crescent Bag</a>
+                    </div>
+                </div>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="cart-btn" id="cartBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <a href="category.html?cat=all" id="breadcrumbCat">Shop</a>
+            <span>/</span>
+            <span id="breadcrumbProduct">Product</span>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-detail-grid">
+                <div class="product-image">
+                    <img id="productImage" src="" alt="Product Image">
+                </div>
+                <div class="product-info">
+                    <h1 id="productName">Product Name</h1>
+                    <p class="product-price" id="productPrice">₦0.00</p>
+                    <p class="product-description" id="productDesc">Description</p>
+                    
+                    <div class="product-options">
+                        <div class="quantity-selector">
+                            <label>Quantity:</label>
+                            <div class="quantity-controls">
+                                <button class="qty-btn" id="qtyMinus">-</button>
+                                <input type="number" id="qtyInput" value="1" min="1">
+                                <button class="qty-btn" id="qtyPlus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn btn-primary btn-add-cart" id="addToCartBtn">Add to Cart</button>
+                        <button class="btn btn-wishlist" id="wishlistBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </button>
+                    </div>
+                    
+                    <div class="product-meta">
+                        <p><strong>Category:</strong> <span id="productCategory">Category</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Products (Recommendations) -->
+    <section class="similar-products">
+        <div class="container">
+            <h2 class="section-title">Similar Products</h2>
+            <p class="section-subtitle">Products you might also be interested in</p>
+            <div class="product-grid" id="similarProducts"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Ugh!</h3>
+                    <p>Your destination for stylish bags</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="category.html?cat=all">Shop All</a>
+                    <a href="index.html#about">About</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: hello@ughbags.com</p>
+                    <p>Phone: (234) 916-306-7887</p>
+                    <p>Address: 1, Adebayo street, Allen, Ikeja</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/ughbags" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="https://facebook.com/ughbags" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="https://x.com/ughbags" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+                        </a>
+                        <a href="https://pinterest.com/ughbags" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12a4 4 0 1 1 8 0c0 4-8 4-8 8"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ugh! All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Panel -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="cart-close" id="cartClose">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Subtotal:</span>
+                <span id="cartTotal">₦0.00</span>
+            </div>
+            <button class="btn btn-primary btn-checkout">Checkout</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <span id="notificationText"></span>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-overlay" id="checkoutOverlay">
+        <div class="checkout-modal">
+            <button class="checkout-close" id="checkoutClose">&times;</button>
+            <div class="checkout-header">
+                <h2>Checkout</h2>
+                <p>Complete your order</p>
+            </div>
+            <div class="checkout-body">
+                <form class="checkout-form" id="checkoutForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="address">Shipping Address *</label>
+                        <textarea id="address" name="address" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City *</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">ZIP Code *</label>
+                        <input type="text" id="zipCode" name="zipCode" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="orderNotes">Order Notes (Optional)</label>
+                        <textarea id="orderNotes" name="orderNotes" rows="2"></textarea>
+                    </div>
+                    <div class="payment-methods full-width">
+                        <h3>Payment Method</h3>
+                        <div class="payment-options">
+                            <div class="payment-option">
+                                <input type="radio" id="bankTransfer" name="payment" value="bank_transfer" required onchange="handlePaymentMethodChange(this.value)">
+                                <label for="bankTransfer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                                    <span>Bank Transfer</span>
+                                </label>
+                            </div>
+                            <div class="payment-option">
+                                <input type="radio" id="paypal" name="payment" value="paypal">
+                                <label for="paypal">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 11l4 4 10-10"></path><path d="M7 15l4-4 10 10"></path></svg>
+                                    <span>Paypal</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-summary full-width">
+                        <h3>Order Summary</h3>
+                        <div class="summary-items" id="summaryItems"></div>
+                        <div class="summary-totals">
+                            <div class="summary-row">
+                                <span>Subtotal</span>
+                                <span id="summarySubtotal">₦0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>VAT (7.5%)</span>
+                                <span id="summaryVat">₦0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Shipping</span>
+                                <span>Free</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="summaryTotal">₦0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bank Transfer Details Section -->
+                    <div class="bank-details-section full-width" id="bankDetailsSection" style="display: none;">
+                        <h3>Bank Transfer Details</h3>
+                        <div class="bank-info">
+                            <p><strong>Bank Name:</strong> <span id="bankName">Palmpay</span></p>
+                            <p><strong>Account Name:</strong> <span id="accountName">Destiny Okoro</span></p>
+                            <p><strong>Account Number:</strong> <span id="accountNumber">7044105703</span></p>
+                            <p><strong>Reference:</strong> <span id="bankReference">UGHB-ORDER</span></p>
+                        </div>
+                        <p class="bank-instructions">Please transfer the exact amount shown above. Your order will be processed once payment is confirmed.</p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary checkout-btn">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation -->
+    <div class="confirmation-overlay" id="confirmationOverlay">
+        <div class="confirmation-modal">
+            <div class="confirmation-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h2>Order Placed!</h2>
+            <p>Thank you for your purchase</p>
+            <div class="order-number" id="orderNumber">UGHB-000000</div>
+            <div class="confirmation-details">
+                <h4>Order Details</h4>
+                <p><strong>Name:</strong> <span id="confirmName"></span></p>
+                <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+                <p><strong>Items:</strong> <span id="confirmItems"></span></p>
+                <p><strong>Total:</strong> <span id="confirmTotal"></span></p>
+            </div>
+            <button class="btn btn-primary confirmation-btn" id="continueShopping">Continue Shopping</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProductDetail();
+        });
+    </script>
+</body>
+</html>
