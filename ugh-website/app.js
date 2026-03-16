@@ -51,7 +51,7 @@ const products = [
     {
         id: 1,
         name: "Coach Teri Blue",
-        price: 30000,
+        price: 35000,
         category: "teri",
         categoryName: "Coach Bags",
         image: "img1/download.jfif",
@@ -61,7 +61,7 @@ const products = [
     {
         id: 2,
         name: "Coach Teri Brown ",
-        price: 35000,
+        price: 40000,
         category: "teri",
         categoryName: "Coach Bags",
         image: "img1/download (1).jfif",
@@ -71,7 +71,7 @@ const products = [
     {
         id: 3,
         name: "Boxed Pillow Coach",
-        price: 45000,
+        price: 60000,
         category: "Pillow coach",
         categoryName: "Pillow Coach ",
         image: "img1/download (2).jfif",
@@ -80,7 +80,7 @@ const products = [
     {
         id: 4,
         name: "Boxed Denim Pillow Coach",
-        price: 45000,
+        price: 60000,
         category: "Pillow coach",
         categoryName: "Pillow Coach ",
         image: "img1/download (3).jfif",
@@ -109,7 +109,7 @@ const products = [
     {
         id: 7,
         name: "Dark Brown Pillow",
-        price: 45000,
+        price: 50000,
         category: "Pillow coach",
         categoryName: "Pillow Coach ",
         image: "img1/download (6).jfif",
@@ -214,7 +214,7 @@ const products = [
     {
         id: 18,
         name: "Embroidery LadyDior",
-        price: 60000,
+        price: 105000,
         category: "ladydior",
         categoryName: "Lady Dior",
         image: "img1/ladydior.jfif",
@@ -223,7 +223,7 @@ const products = [
     {
         id: 19,
         name: "Flip Matte Chanel",
-        price: 45000,
+        price: 80000,
         category: "chanel",
         categoryName: "Chanel",
         image: "img1/Bigchanel.jfif",
