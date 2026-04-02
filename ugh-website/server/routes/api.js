@@ -1,8 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const Order = require('../models/Order');
-const Customer = require('../models/Customer');
-const { sendOTPEmail, sendWaitlistNotification } = require('../services/emailService');
+
+
+
 
 // ==================== PRODUCTS ROUTES ====================
 // Note: Products are served from frontend app.js (local array)

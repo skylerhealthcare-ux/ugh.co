@@ -7,7 +7,7 @@
 // ========================================
 // Update this to your Railway backend URL after deployment
 // Example: 'https://your-app.up.railway.app/api'
-const API_BASE_URL = ''; // Leave empty for local testing, fill after deploying to Railway
+
 
 const CONFIG = {
     vatRate: 0.075, // 7.5% Nigerian Standard VAT
@@ -823,8 +823,7 @@ function handlePaymentMethodChange(paymentMethod) {
     }
 }
 
-function processOrder(formData) {
-    const orderNumber = 'UGHB-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+
     const paymentMethod = formData.get('payment');
     const totals = getTotalWithVAT();
     

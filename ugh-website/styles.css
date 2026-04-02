@@ -1721,8 +1721,7 @@ button {
     border-color: var(--primary-pink);
 }
 
-.payment-error {
-    color: #e74c3c;
+
     font-size: 0.85rem;
     margin-top: 8px;
     display: none;

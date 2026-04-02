@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device=device-width, initial-scale=1.0">
+    <title>Payment Verification - Ugh! Bags</title>
+    <meta name="description" content="Verify your payment">
+    <link rel="icon" type="image/x-icon" href="img1/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Playfair+Display:wght@400;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Ugh!</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="category.html?cat=all" class="nav-link">Shop</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="payment-verification">
+        <div class="container">
+            <div class="verification-form-container">
+                <h1>Payment Verification</h1>
+                <p>Upload proof of payment to complete your order</p>
+                
+                <div class="order-summary-card">
+                    <h3>Order Details</h3>
+                    <div id="orderDetails">
+                        Loading...
+                    </div>
+                    <div class="total-row">
+                        <span>Total Amount:</span>
+                        <strong id="orderTotal">₦0.00</strong>
+                    </div>
+                </div>
+
+                <form id="verificationForm" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="claimedAmount">Amount Paid *</label>
+                        <input type="number" id="claimedAmount" name="claimedAmount" step="0.01" required>
+                        <small>Enter the exact amount you transferred</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="proofFile">Payment Proof (Screenshot) *</label>
+                        <input type="file" id="proofFile" name="proof" accept="image/*" required>
+                        <small>Upload screenshot of your bank transfer receipt</small>
+                        <div class="file-preview" id="filePreview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryNote">Delivery Note (Optional)</label>
+                        <input type="text" id="deliveryNote" name="deliveryNote" placeholder="e.g. Birthday gift, wrap as surprise">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Verify Payment</button>
+                </form>
+
+                <div id="verificationStatus"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Ugh! Bags. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="payment-verification.js"></script>
+</body>
+</html>

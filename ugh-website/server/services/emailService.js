@@ -213,7 +213,7 @@ const sendWaitlistNotification = async (email, productName) => {
     }
 };
 
-module.exports = {
+
     sendOrderConfirmation,
     sendOTPEmail,
     sendWaitlistNotification
