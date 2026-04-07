@@ -932,8 +932,7 @@ function initPaymentMethodListeners() {
 // ========================================
 // Initialize
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
-    updateCartUI();
+
     initCartListeners();
     initCheckoutListeners();
     initPaymentMethodListeners();
